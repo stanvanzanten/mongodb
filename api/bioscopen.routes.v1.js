@@ -37,4 +37,32 @@ routes.delete('/bioscopen/:id', function(req, res) {
         .catch(error => res.status(401).json(error));
 });
 
+routes.post('/bioscopen', function(req, res) {
+    var new_bioscoop = new Bioscoop(req.body);
+    new_bioscoop.save(function(err, task) {
+      if (err)
+        res.send(err);
+        res.json(task);
+    });
+});
+
+routes.put('/bioscopen/:id', function(req, res) {
+    
+        res.contentType('application/json');
+        var id = req.params.id;
+    
+        var update = { 
+            "name" : req.body.name, 
+            "description" : req.body.description,
+        };
+        Bioscoop.findById(id)
+            .then( bioscoop => {
+                bioscoop.set(update);
+                bioscoop.save();
+                res.status(200).json(bioscoop);
+                
+            })
+            .catch((error) => res.status(401).json(error));
+});
+
 module.exports = routes;
