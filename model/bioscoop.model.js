@@ -12,21 +12,21 @@ const Bioscoop = mongoose.model('bioscoop', BioscoopSchema);
 const bioscoop1 = new Bioscoop({
     name: 'Zaal 1',
     description:'200 plekken',
-}).save();
+});//.save();
 
 const bioscoop2 = new Bioscoop({
     name: 'Zaal 2',
     description:'150 plekken',
-}).save();
+});//.save();
 
 const bioscoop3 = new Bioscoop({
     name: 'Zaal 3',
     description:'250 plekken',
-}).save();
+});//.save();
 
 const bioscoop4 = new Bioscoop({
     name: 'Zaal 4',
     description:'300 plekken',
-}).save();
+});//.save();
 
 module.exports = Bioscoop;
